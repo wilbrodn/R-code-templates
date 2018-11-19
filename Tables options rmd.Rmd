@@ -1,0 +1,34 @@
+---
+title: "Table options"
+output: html_document
+---
+
+copied from: https://rmarkdown.rstudio.com/lesson-7.html
+
+Several packages support making beautiful tables with R, such as
+
+* [xtable](https://cran.r-project.org/web/packages/xtable/)
+* [stargazer](https://cran.r-project.org/web/packages/stargazer/)
+* [pander](http://rapporter.github.io/pander/)
+* [tables](https://cran.r-project.org/web/packages/tables/)
+* [ascii](http://eusebe.github.io/ascii/)
+* [Create Awesome HTML Table with knitr::kable and kableExtra](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html#table_styles)
+* etc.
+
+It is also very easy to make tables with knitr's `kable` function:
+
+```{r echo = FALSE, results = 'asis'}
+library(knitr)
+kable(mtcars[1:5, ], caption = "A knitr kable.")
+
+###Add some kable
+library(kableExtra)
+head(mtcars)%>%kable()%>%
+  kable_styling(bootstrap_options = c("striped"), font_size = 11, full_width = F, position = "center") %>%
+  row_spec(0, color = "white", background = "blue", font_size = 12)
+
+
+```
+
+
+
